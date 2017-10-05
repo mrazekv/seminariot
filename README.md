@@ -5,7 +5,8 @@ Bezpečnost vestavěných systémů - *Seminář pro studenty SŠ "IT a bezpečn
 
 ### Prezentace ###
 
-[<i class="icon-provider-gdrive"></i> Google Dokument](https://docs.google.com/presentation/d/1sUErDtJMu-sDf1eJhjGv_D8pvDge2YkUTx2nQOzZXFg/edit?usp=sharing)
+[![Google Slides](master/misc/slides.png) Prezentace ze cvičení](https://docs.google.com/presentation/d/1sUErDtJMu-sDf1eJhjGv_D8pvDge2YkUTx2nQOzZXFg/edit?usp=sharing)
+[![Google Docs](master/misc/docs.png) Zadání cvičení](https://docs.google.com/document/d/1Oer2RyeE5OSiQqa4KS85ElZ2al3vTIOPsZyrpHvq5Ek/edit?usp=sharing)
 
 ### Cvičení ###
 V tomto demu si postupně naprogramujete jednoduchý IoT modul, který bude snímat teplotu vzduchu pomocí čidla na shieldu, tuto teplotu odesílat na server a podle pokynů obdržených ze serveru rozsvěcovat LED (v demu jsou pokyny generovány náhodně, bez ohledu na naměřenou teplotu).
