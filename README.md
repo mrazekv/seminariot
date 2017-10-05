@@ -88,8 +88,8 @@ Vašim úkolem bude postupně doplňovat kód dvou funkcí:
  - funkce loop() se volá neustále dokola (bez zpoždění) a měla by obsahovat hlavní funkcionalitu (v našem případě čtení teploty a komunikaci)
 
 Poté, co si otevřete kostru v Arduino IDE, zkontrolujte, zda je zvolena správná deska a port:
-v menu Tools -> Board by mělo být  “Wemos D1 R2 & Mini”
-v menu Tools -> Port by mělo být nejčastěji COM3 (modul se může objevit i pod jiným číslem, ale prakticky nikdy to není COM1)
+ - v menu Tools -> Board by mělo být  “Wemos D1 R2 & Mini”
+ - v menu Tools -> Port by mělo být nejčastěji COM3 (modul se může objevit i pod jiným číslem, ale prakticky nikdy to není COM1)
 
 
 **Řešení**
