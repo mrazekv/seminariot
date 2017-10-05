@@ -33,7 +33,7 @@ const char* ssid = "FITIOT";
 const char* password = "IOTFITVUTBR";
 
 // adresa serveru
-const String server = "dhcpz244.fit.vutbr.cz";
+const String server = "192.168.0.100";
 
 // vase ID
 const int myId = 12;
