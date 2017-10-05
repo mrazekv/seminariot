@@ -6,9 +6,10 @@ Bezpečnost vestavěných systémů - *Seminář pro studenty SŠ "IT a bezpečn
 ### Prezentace ###
 
 [![Google Slides](misc/slides.png) Prezentace ze cvičení](https://docs.google.com/presentation/d/1sUErDtJMu-sDf1eJhjGv_D8pvDge2YkUTx2nQOzZXFg/edit?usp=sharing)
-[![Google Docs](misc/docs.png) Zadání cvičení](https://docs.google.com/document/d/1Oer2RyeE5OSiQqa4KS85ElZ2al3vTIOPsZyrpHvq5Ek/edit?usp=sharing)
 
 ### Cvičení ###
+[![Google Docs](misc/docs.png) Zadání cvičení](https://docs.google.com/document/d/1Oer2RyeE5OSiQqa4KS85ElZ2al3vTIOPsZyrpHvq5Ek/edit?usp=sharing)
+
 V tomto demu si postupně naprogramujete jednoduchý IoT modul, který bude snímat teplotu vzduchu pomocí čidla na shieldu, tuto teplotu odesílat na server a podle pokynů obdržených ze serveru rozsvěcovat LED (v demu jsou pokyny generovány náhodně, bez ohledu na naměřenou teplotu).
 
 Abychom získali skutečný systém pro regulaci vytápění, stačí místo LED připojit například relé pro spínání kotle nebo serva pro regulaci ventilů topení a na serveru doplnit řídicí logiku a případnou agregaci dat z více senzorů (např. snímače vlhkosti, předpověď počasí na internetu a další).
@@ -16,6 +17,7 @@ Abychom získali skutečný systém pro regulaci vytápění, stačí místo LED
 Wemos D1 mini budeme programovat pomocí Arduino IDE s příslušnými rozšířeními. 
 
 **Kostra programu**
+
 Připravili jsme pro vás kostru programu, do které budete doplňovat vlastní kód. Obsahuje definice potřebných proměnných a knihoven. 
 
 ```arduino
@@ -91,4 +93,5 @@ v menu Tools -> Port by mělo být nejčastěji COM3 (modul se může objevit i 
 
 
 **Řešení**
+
 Abyste si mohli odzkoušet práci s deskou i doma, nabízíme vám vyřešené úkoly ke stažení. Můžete se podívat i na zdrojový kód jednoduchého nezabezpečeného serveru implementovaného pomocí PHP.
