@@ -21,7 +21,7 @@ require("config.php");
 	<![endif]-->
 	<style>
 
-	.led { color: #600; }
+	.led { color: #ccc; text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
 	.led.light {color: red;}
 
 	.pull-left {
@@ -38,10 +38,12 @@ require("config.php");
 		font-weight: normal;
 		margin-top: 0;
 		text-align: center;
+		font-weight: bold;
 	}
 
 	.online .measure-number {
 		color: #28a745;
+		xtext-shadow: -1px -1px 0 #666, 1px -1px 0 #666, -1px 1px 0 #666, 1px 1px 0 #666;  
 	}
 
 	.offline .value {
@@ -63,7 +65,49 @@ require("config.php");
 	.note {
 		font-size: 2rem;
 		margin-bottom: 0;
+		width: 140px;
+		height: 1.4em;
+		overflow: hidden;
+		float: right;
 	}
+
+
+	.panel-body {
+	}
+	
+	.hack img	{
+		width: 30px;
+		margin-bottom: 4px;
+	}
+	
+	.hack_on.panel-primary {
+		border-color: black;
+	}
+	
+	.hack_on .measure-number {
+		color: silver;
+	}
+	
+	.hack_on .panel-body	{
+		background: black;
+		color: white;
+	}
+
+	.hack_off .hack , .hack_on .datainfo {
+		display: none;
+	}
+	.hack_on .hack, .hack_off .datainfo {
+		display: block;
+
+	}
+	
+	
+	body.foundHack {
+		background: black;	
+	}
+
+	
+
 
 	</style>
   </head>
@@ -102,18 +146,19 @@ require("config.php");
 	<div class="col-sm-3">
 		<div class="panel panel-primary" id="measure_<?= $i ?>">
 			<div class="panel-body">
-				<div class="pull-left">
-					<h3 class="measure-number">#<?= $i ?></h3>
-					<p class="leds">
-						<span class="glyphicon glyphicon-stop led led1" aria-hidden="true"></span>
-						<span class="glyphicon glyphicon-stop led led2" aria-hidden="true"></span>
-						<span class="glyphicon glyphicon-stop led led3" aria-hidden="true"></span>
-					</p>
-				</div>
-				<div class="pull-right">
-					<p class="value">NaN</p>
-					<p class="note" >Poznámka...</p>
-				</div>
+			<div class="pull-left">
+				<h3 class="measure-number hack"><img src="hack.png" ><?= $i ?></h3>
+				<h3 class="measure-number datainfo">#<?= $i ?></h3>
+				<p class="leds">
+					<span class="glyphicon glyphicon-stop led led1" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-stop led led2" aria-hidden="true"></span>
+					<span class="glyphicon glyphicon-stop led led3" aria-hidden="true"></span>
+				</p>
+			</div>
+			<div class="pull-right">
+				<p class="value">NaN</p>
+				<p class="note" >Poznámka...</p>
+			</div>
 			</div>
 		</div>
 	</div>
@@ -136,40 +181,66 @@ require("config.php");
 			$.each(result, function(i, field){
 				//console.log(field);
 				var v = parseFloat(field["temp"]);
-				var s = "#measure_" + field["id"];
-
-				var panel = $(s);
-
-				if (parseInt(field["is_online"]) > 0) {
-					panel.addClass("online");
-					panel.removeClass("offline");
-				} else {
-					panel.addClass("offline");
-					panel.removeClass("online");
+				if(field["id"] > 500)
+				{
+					if(parseInt(field["is_online"]) > 0)
+					{
+						$("body").addClass("foundHack");
+					}
+					else
+					{
+						$("body").removeClass("foundHack");
+					}
 				}
+				else
+				{
+					var s = "#measure_" + field["id"];
 
-				$(s + " .value").html(v.toFixed(2) + "°C");
-				$(s + " .note").html(field["note"] + "&nbsp;");
-				var v = parseInt(field["status"]);
+					var panel = $(s);
 
-				if(v & 0x01) {
-					$(s + " .led1").addClass("light");
-				} else {
-					$(s + " .led1").removeClass("light");
+					if (parseInt(field["is_online"]) > 0) {
+						panel.addClass("online");
+						panel.removeClass("offline");
+					} else {
+						panel.addClass("offline");
+						panel.removeClass("online");
+					}
+					
+					if(field["hacked"]) {
+						panel.addClass("hack_on");
+						panel.removeClass("hack_off");
+						$(s + " .glyphicon").removeClass("glyphicon-stop");
+						$(s + " .glyphicon").addClass("glyphicon-heart");
+					}
+					else {
+						panel.addClass("hack_off");
+						panel.removeClass("hack_on");
+						$(s + " .glyphicon").addClass("glyphicon-stop");
+						$(s + " .glyphicon").removeClass("glyphicon-heart");
+					}
+
+					$(s + " .value").text(v.toFixed(2) + "°C");
+					$(s + " .note").text(field["note"]);
+					var v = parseInt(field["status"]);
+
+					if(v & 0x01) {
+						$(s + " .led1").addClass("light");
+					} else {
+						$(s + " .led1").removeClass("light");
+					}
+
+					if(v & 0x02) {
+						$(s + " .led2").addClass("light");
+					} else {
+						$(s + " .led2").removeClass("light");
+					}
+
+					if(v & 0x04) {
+						$(s + " .led3").addClass("light");
+					} else {
+						$(s + " .led3").removeClass("light");
+					}
 				}
-
-				if(v & 0x02) {
-					$(s + " .led2").addClass("light");
-				} else {
-					$(s + " .led2").removeClass("light");
-				}
-
-				if(v & 0x04) {
-					$(s + " .led3").addClass("light");
-				} else {
-					$(s + " .led3").removeClass("light");
-				}
-
 			});
 		}).always(function() {
 			setTimeout(worker, 500);

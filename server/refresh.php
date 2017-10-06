@@ -13,8 +13,11 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
     $db->query("update temp set status = floor(rand() * 8) where id < 50");
 
-    $db->query("update temp set status = 7 where id > 50 and temp > 49");
-    $db->query("update temp set status = 0 where id > 50 and temp <= 49");
+    $db->query("update temp set status = 7 where id > 100 and id < 200 and temp > 49");
+    $db->query("update temp set status = 0 where id > 100 and id < 200 and temp <= 49");
+	
+	$db->query("update temp set status = 7 - status where id > 500");
+	
     die(date('r'));
 
 } else { ?>

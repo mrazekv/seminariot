@@ -1,5 +1,5 @@
 <?php
-$conf["db_server"] = "";
+$conf["db_server"] = "localhost";
 $conf["db_user"] = "";
 $conf["db_password"] = "";
 $conf["db_name"] = "";
