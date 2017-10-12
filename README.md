@@ -51,11 +51,11 @@ const int led3 = 2;
 #include <ESP8266HTTPClient.h>
 
 // jmeno site a heslo pro pripojeni
-const char* ssid = "FITIOT";
+const char* ssid = "FITIOT2";
 const char* password = "IOTFITVUTBR";
 
 // adresa serveru
-const String server = "dhcpz244.fit.vutbr.cz";
+const String server = "192.168.0.100";
 
 // vase ID
 const int myId = 12;
